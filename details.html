@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/details.css" />
+		<link rel="stylesheet" type="text/css" href="css/header.css" />
+		<link rel="stylesheet" type="text/css" href="css/footer.css" />
+	</head>
+	<body>
+		<header>
+
+		</header>
+		<main>
+			<div class="details-nav">
+				<ul>
+					<li><a href="">首页</a></li>
+					<li>></li>
+					<li><a href="">香水</a></li>
+					<li>></li>
+					<li><a href="">女士香水</a></li>
+					<li>></li>
+					<li><a href="">反转巴黎香水</a></li>
+					<li>></li>
+					<li><a href="">圣罗兰反转巴黎香水</a></li>
+				</ul>
+			</div>
+			<div class="details-poto">
+				<div class="details-poto-left">
+					<div class="details-poto-small">
+						<img src="img/15904910925417366_110X110.jpg" style="border: 1px solid #000000;">
+						<img src="img/15903352774331481_110X110.jpg">
+						<img src="img/15903352873435312_110X110.jpg">
+						<img src="img/15903352974915994_110X110.jpg">
+					</div>
+					<div class="details-poto-box">
+						<div class="details-poto-mask">
+
+						</div>
+					</div>
+					<div class="details-poto-box1">
+						<div class="details-poto-mask1">
+
+						</div>
+					</div>
+					<div class="details-poto-box2">
+						<div class="details-poto-mask2">
+
+						</div>
+					</div>
+					<div class="details-poto-box3">
+						<div class="details-poto-mask3">
+
+						</div>
+					</div>
+				</div>
+				<div class="details-poto-right">
+					<h2>MON PARIS EDP COLLECTOR EDITION</h2>
+					<h1 class="shopname">圣罗兰反转巴黎香水</h1>
+					<div class="take_star">
+						<span>☆☆☆☆☆</span><a href="">添加你的评论</a>
+					</div>
+					<div class="take_starnext">
+						<p class="pp">反转巴黎X香水大使 迪丽热巴首款合作设<br>计属于她梦想中的香水 定格巴黎记忆</p>
+					</div>
+					<div class="det_price">
+						<ul>
+							<li>
+								<div>
+									<p class="norm">50ml</p>
+									<p>¥1090</p>
+								</div>
+							</li>
+						</ul>
+						<input type="checkbox" />免费刻字
+						<p>勾选后点击加入购物袋，即享专属定制刻字服务。</p>
+						<p>任购即享刻字礼遇。刻字工艺需耗时3个工作日，最终配送时间会相应延长。</p>
+						<div class="det_add">
+							<div style="display: flex;" class="det_addflex">
+								<a class="btc">-</a><input type="text" value="1" disabled class="int"><a class="btn">+</a>
+							</div>
+							<div class="det_howmuch">
+								￥<span class="price">1090</span>
+							</div>
+							<a class="det_addtopocket">
+								<i class="iconfont icon-shopping"></i>
+								<span class="join">加入购物袋</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="imgge">
+				<img src="img/detail-box-1.jpg">
+				<img src="img/detail-box-2.jpg">
+				<img src="img/detail-box-3.jpg">
+				<img src="img/detail-box-4.jpg">
+				<img src="img/detail-box-4.1.jpg">
+				<img src="img/detail-box-5.jpg">
+				<img src="img/detail-box-6.jpg">
+				<img src="img/detail-box-7.jpg">
+				<img src="img/detail-box-8.jpg">
+				<img src="img/detail-box-9.jpg">
+				<img src="img/detail-box-10.jpg">
+				<img src="img/detail-box-11.jpg">
+				<img src="img/detail-box-12.jpg">
+				<img src="img/detail-box-13.jpg">
+				<img src="img/detail-box-14.jpg">
+				<img src="img/detail-box-15.jpg">
+				<img src="img/detail-box-16.jpg">
+			</div>
+		</main>
+		<footer>
+
+		</footer>
+	</body>
+
+</html>
+<script src="js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/Magnifiter.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/details.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+	$("header").load("header.html");
+	$("footer").load("footer.html");
+
+	let oSmallbox = document.querySelector(".details-poto-box");
+	let oMask = document.querySelector(".details-poto-mask");
+	let mf = new magnifier(oSmallbox, oMask);
+
+	mf.onmouseover();
+	mf.onmouseout();
+	mf.onmousemove();
+
+	$(function() {
+		// 点击第二个图片,让其他的背景图和边框隐藏
+		$(".details-poto-small img").eq(1).click(function() {
+			$(".details-poto-box").css({
+				"display": "none"
+			});
+			$(".details-poto-box1").css({
+				"display": "block",
+			})
+			$(".details-poto-box2").css({
+				"display": "none"
+			});
+			$(".details-poto-box3").css({
+				"display": "none"
+			});
+			$(this).css({
+				"border": "1px solid #000"
+			});
+			$(".details-poto-small img").eq(0).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(2).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(3).css({
+				"border": "none"
+			});
+			let oSmallbox = document.querySelector(".details-poto-box1");
+			let oMask = document.querySelector(".details-poto-mask1");
+			let mf = new magnifier(oSmallbox, oMask);
+
+			mf.onmouseover();
+			mf.onmouseout();
+			mf.onmousemove();
+		});
+		// 点击第三个图片,让其他的背景图和边框隐藏
+		$(".details-poto-small img").eq(2).click(function() {
+			$(".details-poto-box").css({
+				"display": "none"
+			});
+			$(".details-poto-box1").css({
+				"display": "none"
+			});
+			$(".details-poto-box2").css({
+				"display": "block",
+			});
+			$(".details-poto-box3").css({
+				"display": "none"
+			});
+			$(this).css({
+				"border": "1px solid #000"
+			});
+			$(".details-poto-small img").eq(0).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(1).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(3).css({
+				"border": "none"
+			});
+			let oSmallbox = document.querySelector(".details-poto-box2");
+			let oMask = document.querySelector(".details-poto-mask2");
+			let mf = new magnifier(oSmallbox, oMask);
+
+			mf.onmouseover();
+			mf.onmouseout();
+			mf.onmousemove();
+
+		});
+		// 点击第四个图片,让其他的背景图和边框隐藏
+		$(".details-poto-small img").eq(3).click(function() {
+			$(".details-poto-box").css({
+				"display": "none"
+			});
+			$(".details-poto-box1").css({
+				"display": "none"
+			});
+			$(".details-poto-box2").css({
+				"display": "none"
+			});
+			$(".details-poto-box3").css({
+				"display": "block",
+			})
+			$(this).css({
+				"border": "1px solid #000"
+			});
+			$(".details-poto-small img").eq(0).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(1).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(2).css({
+				"border": "none"
+			});
+			let oSmallbox = document.querySelector(".details-poto-box3");
+			let oMask = document.querySelector(".details-poto-mask3");
+			let mf = new magnifier(oSmallbox, oMask);
+
+			mf.onmouseover();
+			mf.onmouseout();
+			mf.onmousemove();
+
+		});
+		// 点击第一个图片,让其他的背景图和边框隐藏
+		$(".details-poto-small img").eq(0).click(function() {
+			$(".details-poto-box").css({
+				"display": "block",
+			})
+			$(".details-poto-box3").css({
+				"display": "none"
+			});
+			$(".details-poto-box2").css({
+				"display": "none"
+			});
+			$(".details-poto-box1").css({
+				"display": "none"
+			});
+			$(this).css({
+				"border": "1px solid #000"
+			});
+			$(".details-poto-small img").eq(1).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(2).css({
+				"border": "none"
+			});
+			$(".details-poto-small img").eq(3).css({
+				"border": "none"
+			});
+		});
+		let oSmallbox = document.querySelector(".details-poto-box");
+		let oMask = document.querySelector(".details-poto-mask");
+		let mf = new magnifier(oSmallbox, oMask);
+
+		mf.onmouseover();
+		mf.onmouseout();
+		mf.onmousemove();
+
+	});
+
+	// 点击增加减少数量
+	function addgoods(but) {
+		let num = but.prev().val();
+		if (num < 5) {
+			num++;
+			but.prev().val(num);
+		}
+
+	}
+
+	function jian(but) {
+		let scrt = but.next().val();
+		if (scrt > 1) {
+			scrt--;
+			but.next().val(scrt);
+		}
+	}
+
+	$(".btn").click(function() {
+		addgoods($(this))
+	})
+	$(".btc").click(function() {
+		jian($(this))
+	})
+</script>
