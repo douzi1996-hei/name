@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ToDoList</title>
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="css/test.css"/>
+		<style type="text/css">
+			main{
+				width: 900px;
+				margin: 0 auto;
+			}
+			.header{
+				width: 100%;
+				height: 50px;
+				background: rgb(50,50,50);
+				box-sizing: border-box;
+				position: relative;
+			}
+			.header .hea-txt{
+				color: rgb(221,221,221);
+				font-size: 30px;
+				display: inline-block;
+				margin: 3px 0 0 15px;
+			}
+			.header .import{
+				width: 500px;
+				height: 35px;
+				position: absolute;
+				right: 20px;
+				top: 8px;
+				outline: none;
+				padding: 10px;
+				box-sizing: border-box;
+				font-size: 15px;
+				border-radius: 5px;
+				border: none;
+			}
+			#progress , #finish{
+				width: 100%;
+				background: rgb(205,205,205);
+			}
+			.progress , .finish{
+				width: 100%;
+				height: 50px;
+				overflow: hidden;
+				position: relative;
+			}
+			.progress .pro-txt , .finish .fin-txt{
+				height: 50px;
+				font-size: 24px;
+				line-height: 24px;
+				font-weight: 700;
+				margin: 11px 0 0 30px;
+				display: inline-block;
+			}
+			#progress .pro-move , #finish .fin-move{
+				width: 38px;
+				height: 38px;
+				display: inline-block;
+				background:#E6E6FB;
+				text-align: center;
+				line-height: 38px;
+				position: absolute;
+				top: 6px;
+				right: 40px;
+				border-radius: 50%;
+			}
+			.newRowP{
+				width: 97%;
+				height: 50px;
+				background-color: #FFFFFF;
+				border: 12px solid #CDCDCD;	
+			}
+			.text{
+				display: inline-block;
+				height: 50px;
+				margin-left: 10px;
+				font-size: 18px;
+			}
+			.check{
+				width: 20px;
+				height: 20px;
+				margin-top: 14px;
+				margin-left: 40px;
+			}
+			p{
+				width: 97%;
+			    height: 50px;
+			    background-color: #FFFFFF;
+			    border: 12px solid #CDCDCD;	
+			}
+			.text{
+				display: inline-block;
+				height: 50px;
+				margin-left: 10px;
+				font-size: 18px;
+			}
+			.delect{
+				display: inline-block;
+				margin-right: 48px;
+				margin-top: 10px;
+				float: right; 
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="header">
+				<p class="hea-txt">ToDoList</p>
+				<input type="text" class="import" placeholder="添加ToDo"/>
+			</div>
+			<div id="progress">
+				<div class="progress">
+					<p class="pro-txt">正在进行</p>
+					<div class="pro-move">0</div>
+				</div>
+			</div>
+			<div id="finish">
+				<div class="finish">
+					<p class="fin-txt">已经完成</p>
+					<div class="fin-move">0</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
+<script src="js/jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+	
+		//保存localStorage的值
+		let ls = localStorage;
+		
+		event();
+		changeNuma();
+		changeNumb();
+		
+		let arr1 = [];
+		let arr2 = [];
+		
+		//增加新的ToDo
+		let toImport = document.getElementsByClassName("import")[0];
+		toImport.addEventListener("keyUp",function(e){
+			if(e.keyCode == 13){
+				let test = $(".import").val();
+				let newRowP = document.createElement("p");
+				newRowP.innerHTML =  
+					`<input class="check" type="checkbox">
+					 <span class="text">${test}</span>
+					 <img class="delect" src="delect.png"/>`;
+				$("#progress").append(newRowP);
+				//存localStorage
+				arr.push(test);
+				ls.setItem('one',JSON.stringify(arr));
+			}
+			
+			event();
+			changeNuma();
+			changeNumb();
+			delect();
+		});
+		
+		//改变小角数字
+		function changeNuma(){
+			let numa = $("#Progress input").length;
+			$(".text").html(numa);;
+		}
+		function changeNumb(){
+			let numb = $("#finish input").length;
+			$(".text").html(numb);;
+		}
+		
+		function event(){
+			let toCheck = $(".check");
+			for(let i = toCheck.length-1; i >= 0; i--){
+				toCheck.eq(i).click(function(){
+					let text = this.nextElementSibling.innerHTML;
+					let newRowPP = document.createElement("p");
+					newRowPP.innerHTML =  
+						`<input class="check" type="checkbox">
+						 <span class="text">${test}</span>
+						 <img class="delect" src="delect.png"/>`;
+					$("#finish").append(newRowPP);
+					
+					this.parentNode.remove();
+					changeNuma();
+					changeNumb();
+					delect();
+					
+					arr2.push(text);
+					ls.setItem('two',JSON.stringify(arr2));
+				});
+				break;
+			}	
+		}
+		
+		// 删除
+		function delect(){
+			let toDelect = $("img");
+			for(let  i = 0; i < toDelect.length; i++){
+				toDelect.eq(i).click(function(){
+					this.parentNode.remove();
+					changeNuma();
+					changeNumb();
+				});
+			}
+		}
+		
+		if(ls){
+			let pro = localStorage.getItem('one');
+			if(pro !== null){
+				let read1 = JSON.parse(localStorage.getItem('one'));
+				for(let i = 0; i < read1.length; i++){
+					let newRowP = document.createElement("p");
+					newRowP.innerHTML =
+						`<input class="check" type="checkbox">
+						 <span class="text">${read1[i]}</span>
+						 <img class="delect" src="delect.png"/>`;
+					$("#progress").append(newRowP);
+				}
+				
+				let read2 = JSON.parse(localStorage.getItem('two'));
+				for(let i = 0; i < read2.length; i++){
+					let newRowPP = document.createElement("p");
+					newRowPP.innerHTML =  
+						`<input class="check" type="checkbox">
+						 <span class="text">${read2[i]}</span>
+						 <img class="delect" src="delect.png"/>`;
+					$("#finish").append(newRowPP);
+				}
+				event();
+				changeNuma();
+				changeNumb();
+				delect();
+			}
+			
+			
+		}
+			
+		
+	});
+	
+</script>
+
